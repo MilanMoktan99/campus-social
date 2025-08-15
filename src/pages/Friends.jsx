@@ -5,118 +5,12 @@ import {
   FaUserClock, FaBell, FaCog
 } from 'react-icons/fa';
 import FriendsCard from '../components/FriendsCard';
+import { friendsDataInitial } from '../assets/assets';
 
 const FriendsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('suggestions');
-  const [friendsData, setFriendsData] = useState({
-    suggestions: [
-      {
-        id: 1,
-        name: 'Emma Wilson',
-        major: 'Computer Science',
-        year: 'Junior',
-        avatar: 'https://i.pravatar.cc/150?img=1',
-        mutualFriends: 12,
-        interests: ['AI', 'Web Dev', 'Gaming'],
-        location: 'North Campus',
-        status: 'Online'
-      },
-      {
-        id: 2,
-        name: 'Marcus Johnson',
-        major: 'Business',
-        year: 'Senior',
-        avatar: 'https://i.pravatar.cc/150?img=2',
-        mutualFriends: 8,
-        interests: ['Finance', 'Sports'],
-        location: 'South Dorms',
-        status: 'In Class'
-      },
-      {
-        id: 3,
-        name: 'Sofia Garcia',
-        major: 'Psychology',
-        year: 'Sophomore',
-        avatar: 'https://i.pravatar.cc/150?img=3',
-        mutualFriends: 15,
-        interests: ['Research', 'Art'],
-        location: 'West Apartments',
-        status: 'Online'
-      },
-      {
-        id: 4,
-        name: 'David Kim',
-        major: 'Engineering',
-        year: 'Freshman',
-        avatar: 'https://i.pravatar.cc/150?img=4',
-        mutualFriends: 5,
-        interests: ['Robotics', 'Music'],
-        location: 'East Village',
-        status: 'Studying'
-      },
-      {
-        id: 5,
-        name: 'Aisha Patel',
-        major: 'Pre-Med',
-        year: 'Senior',
-        avatar: 'https://i.pravatar.cc/150?img=5',
-        mutualFriends: 20,
-        interests: ['Medicine', 'Yoga'],
-        location: 'International House',
-        status: 'Online'
-      }
-    ],
-    friends: [
-      {
-        id: 101,
-        name: 'Sarah Mitchell',
-        major: 'Art History',
-        year: 'Senior',
-        avatar: 'https://i.pravatar.cc/150?img=11',
-        status: 'Online',
-        upcomingEvents: ['Art Exhibition - Fri 3PM']
-      },
-      {
-        id: 102,
-        name: 'Alex Thompson',
-        major: 'Mathematics',
-        year: 'Junior',
-        avatar: 'https://i.pravatar.cc/150?img=12',
-        status: 'Offline',
-        upcomingEvents: ['Math Workshop - Tue 2PM']
-      },
-      {
-        id: 103,
-        name: 'Maria Santos',
-        major: 'Biology',
-        year: 'Sophomore',
-        avatar: 'https://i.pravatar.cc/150?img=13',
-        status: 'Online',
-        upcomingEvents: ['Lab Meeting - Mon 10AM']
-      }
-    ],
-    requests: [
-      {
-        id: 201,
-        name: 'Taylor Chen',
-        major: 'Economics',
-        year: 'Junior',
-        avatar: 'https://i.pravatar.cc/150?img=21',
-        mutualFriends: 7,
-        status: 'Offline'
-      },
-      {
-        id: 202,
-        name: 'Olivia Brown',
-        major: 'Political Science',
-        year: 'Senior',
-        avatar: 'https://i.pravatar.cc/150?img=22',
-        mutualFriends: 4,
-        status: 'Online'
-      }
-    ]
-  });
+  const [friendsData, setFriendsData] = useState(friendsDataInitial);
 
   // Filter friends based on search term
   const filteredFriends = friendsData[activeTab === 'suggestions' ? 'suggestions' : 
