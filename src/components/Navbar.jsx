@@ -2,19 +2,30 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FiX, FiMenu, FiBell } from "react-icons/fi";
 import { assets } from "../assets/assets";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [showProfileCard, setShowProfileCard] = useState(false);
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    let unsubscribe = () => {};
+    try {
+      const auth = getAuth();
+      unsubscribe = onAuthStateChanged(auth, (u) => setUser(u));
+    } catch {}
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      unsubscribe && unsubscribe();
+    };
   }, []);
 
   const navLinks = [
@@ -76,9 +87,65 @@ const Navbar = () => {
             )}
           </div>
 
-          <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-black/70 transition-colors">
-            Login
-          </button>
+          {/* Profile chip and dropdown (only when logged in) */}
+          {user && (
+            <div
+              className="relative"
+              onMouseEnter={() => setShowProfileCard(true)}
+              onMouseLeave={() => setShowProfileCard(false)}
+            >
+              <button
+                className="flex items-center gap-2 px-3 py-1.5 bg-white/70 backdrop-blur rounded-full border border-gray-200 hover:shadow"
+              >
+                <img
+                  src={user.photoURL || "https://i.pravatar.cc/80"}
+                  alt={user.displayName || user.email}
+                  className="w-7 h-7 rounded-full object-cover"
+                />
+                <span className="text-sm text-gray-800 max-w-[120px] truncate">{user.displayName || user.email}</span>
+              </button>
+
+              {showProfileCard && (
+                <div className="absolute right-0 mt-2 w-72 bg-white rounded-xl border border-gray-100 shadow-lg p-4">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={user.photoURL || "https://i.pravatar.cc/80"}
+                      alt={user.displayName || user.email}
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                    <div className="min-w-0">
+                      <p className="font-semibold text-gray-900 truncate">{user.displayName || 'Welcome!'}</p>
+                      <p className="text-xs text-gray-600 truncate">{user.email}</p>
+                    </div>
+                  </div>
+                  <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
+                    <button onClick={() => navigate('/profile')} className="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-800 text-center">Profile</button>
+                    <button onClick={() => navigate('/friends')} className="px-3 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-center">Friends</button>
+                    <button onClick={() => navigate('/events')} className="px-3 py-2 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-lg text-center">Events</button>
+                    <button onClick={() => navigate('/success-stories')} className="px-3 py-2 bg-yellow-50 hover:bg-yellow-100 text-yellow-700 rounded-lg text-center">Stories</button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {user ? (
+            <button
+              className="bg-gray-100 text-gray-800 px-6 py-2 rounded-full hover:bg-gray-200 transition-colors"
+              onClick={async () => {
+                try { await signOut(getAuth()); } catch {}
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              className="bg-black text-white px-6 py-2 rounded-full hover:bg-black/70 transition-colors"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </button>
+          )}
         </div>
 
         {/* Mobile Section */}
@@ -124,12 +191,24 @@ const Navbar = () => {
         </ul>
 
         <div className="p-5">
-          <button
-            className="w-full bg-black text-white rounded-full px-6 py-2 hover:bg-black/60 transition-colors"
-            onClick={() => console.log("Show login form")}
-          >
-            Login
-          </button>
+          {user ? (
+            <button
+              className="w-full bg-gray-100 text-gray-800 rounded-full px-6 py-2 hover:bg-gray-200 transition-colors"
+              onClick={async () => {
+                try { await signOut(getAuth()); } catch {}
+                setIsSidebarOpen(false)
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              className="w-full bg-black text-white rounded-full px-6 py-2 hover:bg-black/60 transition-colors"
+              onClick={() => { setIsSidebarOpen(false); navigate('/login') }}
+            >
+              Login
+            </button>
+          )}
         </div>
       </div>
     </>
