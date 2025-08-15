@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { FiClock, FiEye, FiHeart, FiMessageCircle, FiShare2, FiTrendingUp } from 'react-icons/fi';
 
 const News = () => {
@@ -62,7 +63,7 @@ const News = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 padding-top: 100px;">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-30">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Main Content */}
         <div className="lg:w-2/3">
@@ -94,15 +95,18 @@ const News = () => {
                     />
                   </div>
                   <div className="md:w-2/3 p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">
-                        {item.category}
-                      </span>
-                      <div className="flex items-center text-gray-500 text-sm">
-                        <FiClock className="h-4 w-4 mr-1" />
-                        {item.time}
-                      </div>
-                    </div>
+                                    <div className="flex items-center justify-between mb-3">
+                  <Link
+                    to={`/news/${item.category === 'Campus Life' ? 'campus-life' : item.category.toLowerCase()}`}
+                    className="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full hover:bg-blue-200 transition-colors cursor-pointer"
+                  >
+                    {item.category}
+                  </Link>
+                  <div className="flex items-center text-gray-500 text-sm">
+                    <FiClock className="h-4 w-4 mr-1" />
+                    {item.time}
+                  </div>
+                </div>
                     
                     <h2 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors duration-300">
                       {item.title}

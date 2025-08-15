@@ -3,6 +3,10 @@ import Navbar from './components/Navbar'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import News from './pages/News'
+import CampusLife from './pages/CampusLife'
+import Research from './pages/Research'
+import Academics from './pages/Academics'
+import Environment from './pages/Environment'
 import Events from './pages/Events'
 import EventDetails from './pages/EventDetails'
 import Clubs from './pages/Clubs'
@@ -27,6 +31,10 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/news' element={<News />} />
+        <Route path='/news/campus-life' element={<CampusLife />} />
+        <Route path='/news/research' element={<Research />} />
+        <Route path='/news/academics' element={<Academics />} />
+        <Route path='/news/environment' element={<Environment />} />
         <Route path='/events' element={<Events />} />
         <Route path='/events/:id' element={<EventDetails />} />
         <Route path='/clubs' element={<Clubs />} />
