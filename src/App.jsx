@@ -10,6 +10,8 @@ import ClubDetails from './pages/ClubDetails'
 import Friends from './pages/Friends'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
+import SuccessStory from './pages/SuccessStory'
+import SuccessStoryDetails from './pages/SuccessStoryDetails'
 
 const NotFound = () => (
   <div className="flex items-center justify-center h-screen text-2xl font-semibold">
@@ -30,6 +32,8 @@ const App = () => {
         <Route path='/clubs' element={<Clubs />} />
         <Route path='/clubs/:id' element={<ClubDetails />} />
         <Route path='/friends' element={<Friends />} />
+        <Route path='/success-stories' element={<SuccessStory />} />
+        <Route path='/success-stories/:id' element={<SuccessStoryDetails />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='*' element={<NotFound />} />
