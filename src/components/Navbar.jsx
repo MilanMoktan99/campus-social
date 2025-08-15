@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { FiX, FiMenu } from "react-icons/fi";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { FiX, FiMenu, FiBell } from "react-icons/fi";
 import { assets } from "../assets/assets";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,15 +31,18 @@ const Navbar = () => {
       {/* Desktop Navbar */}
       <div
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 shadow-sm transition-all duration-300
-    ${
-      isScrolled
-        ? "py-0 bg-white/50 backdrop-blur-md"
-        : "py-3 bg-white/50 backdrop-blur-md"
-    }`}
+        ${
+          isScrolled
+            ? "py-0 bg-white/50 backdrop-blur-md"
+            : "py-3 bg-white/50 backdrop-blur-md"
+        }`}
       >
         {/* Left section */}
         <div className="flex gap-6 items-center">
-          <Link to="/" className="flex gap-2 items-center font-medium text-2xl">
+          <Link
+            to="/"
+            className="flex gap-2 items-center font-medium text-2xl"
+          >
             <img src={assets.logo} alt="logo" className="w-20 h-20" />
             Campus Mela
           </Link>
@@ -47,7 +52,6 @@ const Navbar = () => {
             {navLinks.map(({ to, label }) => (
               <NavLink key={to} to={to} className="flex items-center flex-col">
                 <p>{label}</p>
-                {/* Original style hr: always visible for active, hidden otherwise */}
                 <hr className="w-2/4 h-[1.5px] bg-gray-800 border-none hidden" />
               </NavLink>
             ))}
@@ -55,16 +59,42 @@ const Navbar = () => {
         </div>
 
         {/* Right section */}
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-4">
+          {/* Notification Icon */}
+          <div
+            className="relative"
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+            onClick={() => navigate("/notifications")}
+          >
+            <FiBell size={24} className="cursor-pointer text-gray-700 hover:text-black transition-colors" />
+            {/* Tooltip */}
+            {showTooltip && (
+              <div className="absolute top-8 right-0 bg-black text-white text-xs px-2 py-1 rounded shadow-lg">
+                Notifications
+              </div>
+            )}
+          </div>
+
           <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-black/70 transition-colors">
             Login
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button className="md:hidden" onClick={() => setIsSidebarOpen(true)}>
-          <FiMenu size={28} />
-        </button>
+        {/* Mobile Section */}
+        <div className="md:hidden flex items-center gap-4">
+          {/* Notification Icon */}
+          <FiBell
+            size={24}
+            className="cursor-pointer text-gray-700 hover:text-black transition-colors"
+            onClick={() => navigate("/notifications")}
+          />
+
+          {/* Mobile Menu Button */}
+          <button onClick={() => setIsSidebarOpen(true)}>
+            <FiMenu size={28} />
+          </button>
+        </div>
       </div>
 
       {/* Mobile Sidebar */}
