@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from './components/Navbar';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
-import Home from './pages/Home';
-import News from './pages/News';
-import CampusLife from './pages/CampusLife';
-import Research from './pages/Research';
-import Academics from './pages/Academics';
-import Environment from './pages/Environment';
-import Events from './pages/Events';
-import EventDetails from './pages/EventDetails';
-import Clubs from './pages/Clubs';
-import ClubDetails from './pages/ClubDetails';
-import Friends from './pages/Friends';
-import Profile from './pages/Profile';
-import Login from './pages/Login';
-import SuccessStory from './pages/SuccessStory';
-import SuccessStoryDetails from './pages/SuccessStoryDetails';
-import Notification from './pages/Notification';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import Footer from './components/Footer';
+import React, { useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import Home from "./pages/Home";
+import News from "./pages/News";
+import CampusLife from "./pages/CampusLife";
+import Research from "./pages/Research";
+import Academics from "./pages/Academics";
+import Environment from "./pages/Environment";
+import Events from "./pages/Events";
+import EventDetails from "./pages/EventDetails";
+import Clubs from "./pages/Clubs";
+import ClubDetails from "./pages/ClubDetails";
+import Friends from "./pages/Friends";
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
+import SuccessStory from "./pages/SuccessStory";
+import SuccessStoryDetails from "./pages/SuccessStoryDetails";
+import Notification from "./pages/Notification";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Footer from "./components/Footer";
+import Dashboard from "./pages/Dashboard";
 
 const NotFound = () => (
   <div className="flex items-center justify-center h-screen text-2xl font-semibold">
@@ -40,8 +41,8 @@ const App = () => {
         setLoading(false);
 
         // Redirect only if user is on login page
-        if (user && window.location.pathname === '/login') {
-          navigate('/', { replace: true });
+        if (user && window.location.pathname === "/login") {
+          navigate("/", { replace: true });
         }
       });
     } catch (e) {
@@ -75,10 +76,7 @@ const App = () => {
         <Route path="/clubs/:id" element={<ClubDetails />} />
         <Route path="/friends" element={<Friends />} />
         <Route path="/success-stories" element={<SuccessStory />} />
-        <Route
-          path="/success-stories/:id"
-          element={<SuccessStoryDetails />}
-        />
+        <Route path="/success-stories/:id" element={<SuccessStoryDetails />} />
         <Route path="/profile" element={<Profile />} />
         <Route
           path="/login"
@@ -86,6 +84,7 @@ const App = () => {
         />
         <Route path="/notifications" element={<Notification />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </div>

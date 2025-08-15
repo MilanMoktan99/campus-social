@@ -1,4 +1,4 @@
-import logo from "./logo.jpeg";
+import logo from "./logo.png";
 import heroImage from "./hero-image.jpg";
 import event from "./event.jpg";
 import clubs from "./clubs.jpg";

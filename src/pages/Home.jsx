@@ -56,8 +56,12 @@ const Home = () => {
                 className="w-24 h-24 rounded-full mb-4 object-cover"
               />
               <h3 className="text-xl font-semibold">{club.name}</h3>
-              <p className="text-indigo-600 font-medium mt-1">{club.category}</p>
-              <p className="text-gray-500 text-sm mt-1">{club.members} members</p>
+              <p className="text-indigo-600 font-medium mt-1">
+                {club.category}
+              </p>
+              <p className="text-gray-500 text-sm mt-1">
+                {club.members} members
+              </p>
             </Link>
           ))}
         </div>
