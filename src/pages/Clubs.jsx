@@ -1,6 +1,6 @@
 // src/pages/Clubs.jsx
 import React, { useState, useEffect } from 'react';
-import { Search, Filter } from 'lucide-react';
+import { FaSearch, FaFilter } from 'react-icons/fa'; // changed to react-icons
 import Loading from '../components/Loading';
 import ClubCard from '../components/ClubCard';
 import { Link } from 'react-router-dom';
@@ -109,7 +109,7 @@ const Clubs = () => {
         {/* Search and Filter */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-8 flex flex-col md:flex-row gap-4 items-center">
           <div className="flex-1 relative w-full md:w-auto">
-            <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+            <FaSearch className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
             <input
               type="text"
               placeholder="Search clubs..."
@@ -120,7 +120,7 @@ const Clubs = () => {
           </div>
 
           <div className="flex items-center space-x-2">
-            <Filter className="h-5 w-5 text-gray-400" />
+            <FaFilter className="h-5 w-5 text-gray-400" />
             <select
               className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               value={selectedCategory}
