@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Clock, Eye, Heart, MessageCircle, Share, TrendingUp } from 'lucide-react';
+import { FiClock, FiEye, FiHeart, FiMessageCircle, FiShare2, FiTrendingUp } from 'react-icons/fi';
 
 const News = () => {
   const newsItems = [
@@ -99,7 +99,7 @@ const News = () => {
                         {item.category}
                       </span>
                       <div className="flex items-center text-gray-500 text-sm">
-                        <Clock className="h-4 w-4 mr-1" />
+                        <FiClock className="h-4 w-4 mr-1" />
                         {item.time}
                       </div>
                     </div>
@@ -117,7 +117,7 @@ const News = () => {
                       
                       <div className="flex items-center space-x-4 text-gray-500">
                         <div className="flex items-center space-x-1">
-                          <Eye className="h-4 w-4" />
+                          <FiEye className="h-4 w-4" />
                           <span className="text-sm">{item.views}</span>
                         </div>
                         <motion.button 
@@ -125,7 +125,7 @@ const News = () => {
                           whileTap={{ scale: 0.9 }}
                           className="flex items-center space-x-1 hover:text-red-500 transition-colors"
                         >
-                          <Heart className="h-4 w-4" />
+                          <FiHeart className="h-4 w-4" />
                           <span className="text-sm">{item.likes}</span>
                         </motion.button>
                         <motion.button 
@@ -133,7 +133,7 @@ const News = () => {
                           whileTap={{ scale: 0.9 }}
                           className="flex items-center space-x-1 hover:text-blue-500 transition-colors"
                         >
-                          <MessageCircle className="h-4 w-4" />
+                          <FiMessageCircle className="h-4 w-4" />
                           <span className="text-sm">{item.comments}</span>
                         </motion.button>
                         <motion.button 
@@ -141,7 +141,7 @@ const News = () => {
                           whileTap={{ scale: 0.9 }}
                           className="hover:text-green-500 transition-colors"
                         >
-                          <Share className="h-4 w-4" />
+                          <FiShare2 className="h-4 w-4" />
                         </motion.button>
                       </div>
                     </div>
@@ -161,7 +161,7 @@ const News = () => {
             className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-100"
           >
             <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center">
-              <TrendingUp className="h-5 w-5 mr-2 text-blue-600" />
+              <FiTrendingUp className="h-5 w-5 mr-2 text-blue-600" />
               Trending Topics
             </h3>
             <div className="space-y-3">
@@ -209,5 +209,3 @@ const News = () => {
 };
 
 export default News;
-
-
