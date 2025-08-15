@@ -7,7 +7,6 @@ import {
   FaPaperPlane, FaInbox
 } from 'react-icons/fa';
 import FriendsCard from '../components/FriendsCard';
-import { friendsDataInitial } from '../assets/assets';
 
 const FriendsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
