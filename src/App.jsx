@@ -18,6 +18,7 @@ import SuccessStory from './pages/SuccessStory';
 import SuccessStoryDetails from './pages/SuccessStoryDetails';
 import Notification from './pages/Notification';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import Footer from './components/Footer';
 
 const NotFound = () => (
   <div className="flex items-center justify-center h-screen text-2xl font-semibold">
@@ -86,6 +87,7 @@ const App = () => {
         <Route path="/notifications" element={<Notification />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 };

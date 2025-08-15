@@ -183,3 +183,56 @@ export const trendingTopics = [
     { topic: 'Study Groups', posts: 19 },
 ];
 
+export const SUCCESS_STORIES = [
+  {
+    id: 1,
+    name: 'Aisha Rahman',
+    title: 'Data Scientist at TechNova',
+    avatar: 'https://i.pravatar.cc/150?img=47',
+    summary: 'Connected with seniors through Campus Connect, joined the ML club, and landed a summer internship that led to a full-time offer.',
+    degree: 'B.Sc. Computer Science',
+    institution: 'North Campus University',
+    year: '2023',
+    location: 'San Francisco, CA',
+    tags: ['Machine Learning', 'Clubs', 'Mentorship'],
+    highlights: [
+      'Found mentor via Friends → Suggestions and joined weekly ML study group.',
+      'Volunteered at campus hackathon; met recruiter who referred for internship.',
+      'Converted internship to full-time after capstone on recommender systems.'
+    ]
+  },
+  {
+    id: 2,
+    name: 'Marcus Lee',
+    title: 'Research Fellow, Neuroscience Lab',
+    avatar: 'https://i.pravatar.cc/150?img=54',
+    summary: 'Met lab leads at a campus event, collaborated on a paper, and secured a graduate fellowship through alumni connections.',
+    degree: 'B.Sc. Biology',
+    institution: 'West State College',
+    year: '2022',
+    location: 'Boston, MA',
+    tags: ['Research', 'Publications', 'Alumni'],
+    highlights: [
+      'Connected through Events; volunteered as RA for one semester.',
+      'Co-authored poster presentation; presented at regional conference.',
+      'Won fellowship with alumni recommendation.'
+    ]
+  },
+  {
+    id: 3,
+    name: 'Sofia Martinez',
+    title: 'MBA Candidate at Global Business School',
+    avatar: 'https://i.pravatar.cc/150?img=36',
+    summary: 'Used the app to find a mentor, refine applications, and get into a top B-school with a scholarship.',
+    degree: 'BBA',
+    institution: 'East City University',
+    year: '2021',
+    location: 'Chicago, IL',
+    tags: ['MBA', 'Mentorship', 'Scholarship'],
+    highlights: [
+      'Joined mentorship via Friends; weekly prep for essays and interviews.',
+      'Led club event on case competitions; expanded network with alumni.',
+      'Received 50% scholarship after GMAT retake.'
+    ]
+  }
+];
