@@ -12,6 +12,7 @@ import Profile from './pages/Profile'
 import Login from './pages/Login'
 import SuccessStory from './pages/SuccessStory'
 import SuccessStoryDetails from './pages/SuccessStoryDetails'
+import Notification from './pages/Notification'
 
 const NotFound = () => (
   <div className="flex items-center justify-center h-screen text-2xl font-semibold">
@@ -36,6 +37,7 @@ const App = () => {
         <Route path='/success-stories/:id' element={<SuccessStoryDetails />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/notifications' element={<Notification />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
