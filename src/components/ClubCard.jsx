@@ -1,6 +1,6 @@
 // src/components/ClubCard.jsx
 import React from 'react';
-import { Users, Calendar, Award } from 'lucide-react';
+import { FaUsers, FaCalendarAlt, FaAward } from 'react-icons/fa'; // replaced lucide-react
 import { Link } from 'react-router-dom';
 
 const categoryColors = {
@@ -49,17 +49,17 @@ const ClubCard = ({ club }) => {
 
         <div className="space-y-2 mb-4">
           <div className="flex items-center text-sm text-gray-600">
-            <Users size={16} className="mr-2" />
+            <FaUsers size={16} className="mr-2" />
             <span>{members} members</span>
           </div>
 
           <div className="flex items-center text-sm text-gray-600">
-            <Calendar size={16} className="mr-2" />
+            <FaCalendarAlt size={16} className="mr-2" />
             <span>Next meeting: {nextMeeting}</span>
           </div>
 
           <div className="flex items-center text-sm text-gray-600">
-            <Award size={16} className="mr-2" />
+            <FaAward size={16} className="mr-2" />
             <span>{achievements} achievements</span>
           </div>
         </div>
