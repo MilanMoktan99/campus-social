@@ -1,68 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { FiClock, FiEye, FiHeart, FiMessageCircle, FiShare2, FiTrendingUp } from 'react-icons/fi';
+import { newsItems, trendingTopics } from '../assets/assets';
 
 const News = () => {
-  const newsItems = [
-    {
-      id: 1,
-      title: 'New Student Center Opens with State-of-the-Art Facilities',
-      excerpt: 'The campus unveils a modern student center featuring collaborative spaces, dining options, and recreational facilities designed for the next generation of learners.',
-      author: 'Campus News Team',
-      time: '2 hours ago',
-      image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600',
-      views: 1234,
-      likes: 89,
-      comments: 23,
-      category: 'Campus Life'
-    },
-    {
-      id: 2,
-      title: 'Research Team Wins National Innovation Award',
-      excerpt: 'Our computer science department\'s AI research team has been recognized nationally for their groundbreaking work in machine learning applications.',
-      author: 'Dr. Sarah Johnson',
-      time: '5 hours ago',
-      image: 'https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=600',
-      views: 892,
-      likes: 156,
-      comments: 34,
-      category: 'Research'
-    },
-    {
-      id: 3,
-      title: 'Spring Semester Registration Now Open',
-      excerpt: 'Students can now register for spring semester courses. Priority registration begins Monday with expanded course offerings in popular majors.',
-      author: 'Academic Affairs',
-      time: '1 day ago',
-      image: 'https://images.pexels.com/photos/1181534/pexels-photo-1181534.jpeg?auto=compress&cs=tinysrgb&w=600',
-      views: 2156,
-      likes: 67,
-      comments: 45,
-      category: 'Academics'
-    },
-    {
-      id: 4,
-      title: 'Campus Sustainability Initiative Reduces Carbon Footprint by 30%',
-      excerpt: 'Thanks to student-led initiatives and administrative support, our campus has achieved significant environmental milestones this year.',
-      author: 'Environmental Committee',
-      time: '2 days ago',
-      image: 'https://images.pexels.com/photos/414102/pexels-photo-414102.jpeg?auto=compress&cs=tinysrgb&w=600',
-      views: 743,
-      likes: 234,
-      comments: 18,
-      category: 'Environment'
-    }
-  ];
-
-  const trendingTopics = [
-    { topic: 'Final Exams', posts: 45 },
-    { topic: 'Spring Break', posts: 32 },
-    { topic: 'Career Fair', posts: 28 },
-    { topic: 'Study Groups', posts: 19 },
-  ];
+  
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 padding-top: 100px;">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-30">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Main Content */}
         <div className="lg:w-2/3">
@@ -94,15 +40,18 @@ const News = () => {
                     />
                   </div>
                   <div className="md:w-2/3 p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">
-                        {item.category}
-                      </span>
-                      <div className="flex items-center text-gray-500 text-sm">
-                        <FiClock className="h-4 w-4 mr-1" />
-                        {item.time}
-                      </div>
-                    </div>
+                                    <div className="flex items-center justify-between mb-3">
+                  <Link
+                    to={`/news/${item.category === 'Campus Life' ? 'campus-life' : item.category.toLowerCase()}`}
+                    className="bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full hover:bg-blue-200 transition-colors cursor-pointer"
+                  >
+                    {item.category}
+                  </Link>
+                  <div className="flex items-center text-gray-500 text-sm">
+                    <FiClock className="h-4 w-4 mr-1" />
+                    {item.time}
+                  </div>
+                </div>
                     
                     <h2 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors duration-300">
                       {item.title}
